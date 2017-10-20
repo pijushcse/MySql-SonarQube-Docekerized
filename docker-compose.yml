@@ -2,7 +2,8 @@ version: '2'
 services:
  sonarqube:  
   image: sonarqube
-  container_name: phx-sonarqube
+  container_name: phoenix-sonarqube
+  restart: always
   environment:
    -  SONARQUBE_JDBC_USERNAME=debnatp
    -  SONARQUBE_JDBC_PASSWORD=debcse
@@ -15,7 +16,7 @@ services:
  
  mysql:  
   image: mysql
-  container_name: phx-mysql
+  container_name: phoenix-mysql
   ports:
    - "3306:3306"
   environment:
