@@ -1,0 +1,27 @@
+version: '2'
+services:
+ sonarqube:  
+  image: sonarqube
+  container_name: phx-sonarqube
+  environment:
+   -  SONARQUBE_JDBC_USERNAME=debnatp
+   -  SONARQUBE_JDBC_PASSWORD=debcse
+   -  SONARQUBE_JDBC_URL=jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false
+  ports:
+    - "9000:9000"
+    - "9092:9092"
+  links:
+    - mysql
+ 
+ mysql:  
+  image: mysql
+  container_name: phx-mysql
+  ports:
+   - "3306:3306"
+  environment:
+   - MYSQL_ROOT_PASSWORD=debcse 
+   - MYSQL_USER=debnatp
+   - MYSQL_PASSWORD=debcse
+   - MYSQL_DATABASE=sonar
+
+
